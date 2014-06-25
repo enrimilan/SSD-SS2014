@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+	
+	<overview>
+		This 
+		<em>is</em> 
+		an 
+		<b><em>example</em></b> 
+		<em><b>quiz!</b></em>
+	</overview>
+	
+	<categories>
+		<category name="Technology" />
+		<category name="Sports" />
+		<category name="Geography" />
+		<category name="History" />
+	</categories>
+	
+	<questions>
+		<question id="1" maxtime="00:00:15">
+			<text>
+				Which mobile phone manufacturer uses the advertising slogan: Quietly brilliant?
+			</text>
+			<choice nr="1">Nokia</choice>
+			<choice nr="2">Samsung</choice>
+			<choice nr="3" correct="true">HTC</choice>
+			<group name="Technology" />
+		</question>
+		<question id="2" maxtime="00:00:10">
+			<text>
+				What is the capital of Cuba?
+			</text>
+			<choice nr="1">Santiago de Cuba</choice>
+			<choice nr="2" correct="true">Havana</choice>
+			<choice nr="3">Acapulco</choice>
+			<group name="Geography" />
+		</question>
+		<question id="3" maxtime="00:00:15">
+			<text>
+				Who is the actual number one in the ATP ranking?
+			</text>
+			<choice nr="1" correct="true">Rafael Nadal</choice>
+			<choice nr="2">Novak Djokovic</choice>
+			<choice nr="3">Roger Federer</choice>
+			<group name="Sports" />
+		</question>
+		<question id="4" maxtime="00:00:20">
+			<text>
+				Which century - the first book printed in English?
+			</text>
+			<choice nr="1" correct="true">15th</choice>
+			<choice nr="2" correct="true">Before the 16th</choice>
+			<choice nr="3">19th</choice>
+			<choice nr="4">17th</choice>
+			<group name="History" />
+		</question>
+		<question id="5" maxtime="00:00:10">
+			<text>
+				Where will the next World Cup take place?
+			</text>
+			<choice nr="1">Germany</choice>
+			<choice nr="2">Austria</choice>
+			<choice nr="3">Italy</choice>
+			<choice nr="4" correct="true">Brazil</choice>
+			<group name="Sports" />
+		</question>
+	</questions>
+	
+	<users>
+		<user name="Ryan" gender="male">
+			<password>apple</password>
+			<firstname>Ryan</firstname>
+			<lastname>Smith</lastname>
+			<birthdate>1986-08-04</birthdate>
+		</user>
+		<user name="John" gender="male">
+			<password>orange</password>
+			<firstname>John</firstname>
+			<lastname>Terry</lastname>
+			<birthdate>1990-07-04</birthdate>
+		</user>
+		<user name="Anna" gender="female">
+			<password>kiwi</password>
+			<firstname>Anna</firstname>
+			<lastname>Smith</lastname>
+			<birthdate>1980-12-06</birthdate>
+		</user>
+		<user name="Lindsay" gender="female">
+			<password>pie</password>
+			<firstname>Lindsay</firstname>
+			<lastname>Davenport</lastname>
+			<birthdate>1989-02-09</birthdate>
+		</user>
+	</users>
+	
+	<games>
+		<game>
+			<gamer ref="Ryan" />
+			<gamer ref="John" />
+			<round>
+				<answers question="1">
+					<player ref="Ryan">
+						<answer nr="1" time="00:00:10" />
+					</player>
+					<player ref="John">
+						<answer nr="2" time="00:00:12" /> 
+					</player>
+				</answers>
+				<answers question="2">
+					<player ref="Ryan">
+						<answer nr="2" time="00:00:05" /> 
+					</player>
+					<player ref="John">
+						<answer nr="2" time="00:00:05" /> 
+					</player>
+				</answers>
+			</round>
+			<round>
+				<answers question="3">
+					<player ref="Ryan">
+						<answer nr="2" time="00:00:17" /> 
+					</player>
+					<player ref="John">
+						<answer nr="4" time="00:00:10" /> 
+					</player>
+				</answers>
+				<answers question="4">
+					<player ref="John">
+						<answer nr="3" time="00:00:10" /> 
+					</player>
+					<player ref="Ryan">
+						<answer nr="1" time="00:00:11" /> 
+					</player>
+				</answers>
+			</round>
+		</game>	
+		<game>
+			<gamer ref="Lindsay" />
+			<gamer ref="Anna" />
+				<round>
+					<answers question="1">
+						<player ref="Lindsay">
+							<answer nr="3" time="00:00:05" /> 
+						</player>
+						<player ref="Anna">
+							<answer nr="3" time="00:00:07" /> 
+						</player>
+					</answers>
+					<answers question="5">
+						<player ref="Anna">
+							<answer nr="4" time="00:00:06" /> 
+						</player>
+						<player ref="Lindsay">
+							<answer nr="3" time="00:00:10" /> 
+						</player>
+					</answers>
+				</round>
+				<round>
+					<answers question="5">
+						<player ref="Lindsay">
+							<answer nr="4" time="00:00:05" /> 
+						</player>
+						<player ref="Anna">
+							<answer nr="4" time="00:00:02" /> 
+						</player>
+					</answers>
+					<answers question="3">
+						<player ref="Lindsay">
+							<answer nr="1" time="00:00:04" /> 
+						</player>
+						<player ref="Anna">
+							<answer nr="1" time="00:00:10" /> 
+						</player>
+					</answers>
+				</round>
+		</game>
+	</games>
+	
+</quiz>

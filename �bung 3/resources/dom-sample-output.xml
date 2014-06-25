@@ -1,0 +1,26 @@
+<users-dom>
+   <user birthdate="1982-04-01"
+         fullname="Bart Simpson"
+         gender="male"
+         name="Bart">
+      <answerCount>4</answerCount>
+      <gameCount>1</gameCount>
+      <sumTime>17</sumTime>
+   </user>
+   <user birthdate="1984-08-02"
+         fullname="Lisa Simpson"
+         gender="female"
+         name="Lisa">
+      <answerCount>3</answerCount>
+      <gameCount>1</gameCount>
+      <sumTime>24</sumTime>
+   </user>
+   <user birthdate="1955-05-10"
+         fullname="Homer Simpson"
+         gender="male"
+         name="Homer">
+      <answerCount>0</answerCount>
+      <gameCount>0</gameCount>
+      <sumTime>0</sumTime>
+   </user>
+</users-dom>

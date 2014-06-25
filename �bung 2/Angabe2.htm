@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <title>Semistrukturierte Daten - VU 184.705 (2.0)</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<link rel="stylesheet" href="/_resources/tucs/styles/rendering-all.css" media="all" type="text/css"/>
+	<link rel="stylesheet" href="/_resources/tucs/styles/rendering-print.css" media="print" type="text/css"/>
+
+    <style type="text/css">
+      .tcenter {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .table1 {
+        border-collapse: collapse;
+      }
+      .table1 th {
+        border: 1px inset black;
+        padding: 1px;
+      }
+      .table1 td {
+        border: 1px inset black;
+        padding: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="tucsWrap">
+      <a name="top"></a>
+      <div id="tucsHeader">
+        <p class="tucsSkip"><a href="#content">Skip to Content</a></p>
+        <div id="tucsBanner">
+  <img src="/_resources/tucs/images/bgbanner.png" usemap="#tucsBannerMap" alt=""/>
+  <map name="tucsBannerMap" id="tucsbannermap">
+	    <area shape="rect" coords="58,15,105,62" alt="TU Wien" href="http://www.tuwien.ac.at/"/>
+	    <area shape="rect" coords="111,15,158,63" alt="Fakult&auml;t f&uuml;r Informatik" href="http://www.informatik.tuwien.ac.at/"/>
+	    <area shape="rect" coords="167,15,269,62" alt="DBAI" href="http://www.dbai.tuwien.ac.at/"/>
+	    <area shape="rect" coords="468,44,666,93" alt="Database and Artificial Intelligence Group" href="http://www.dbai.tuwien.ac.at/"/>
+  </map>
+</div>
+
+
+        <div id="tucsNav">
+          <span class="tucsSkip">Top-level Navigation:</span>
+          <ul id="tucsMain">
+	    <li><a href="/staff/index.html">Staff</a></li>
+	    <li class="tucsCurrent"><a href="/education/">Education</a></li>
+	    <li><a href="/research/index.html">research</a></li>
+	    <li><a href="/address/index.html">Contact</a></li>
+	    <li class="tucsLast"><a href="/service/index.html">Services</a></li>
+          </ul>
+          <span class="tucsSkip">Current-level Navigation:</span>
+          <ul id="tucsSub">
+	    <li><a href="../index.html">Vorlesungsteil</a></li>
+	    <li class="tucsCurrent">&Uuml;bungsteil</li>
+          </ul>
+        </div>
+        <p id="tucsPath">
+          <span class="tucsSkip">Path:</span>
+          <a href="/index.html">DBAI</a> &gt;
+          <a href="/education/">Education</a> &gt;
+	  <a href="/education/ssd">Semistrukturierte Daten</a> &gt;
+	  <a href="/education/ssd/current/uebung.html">&Uuml;bung</a> &gt;
+	  Beispiel 2
+        </p>
+        <p id="tucsTools">
+          <span class="tucsSkip">Tools:</span>
+	  <a href="#" onclick="window.print(); return false">Drucken</a>
+        </p>
+	
+        <hr class="tucsSkip" />
+      </div>
+      <a name="content"></a>
+      <div id="tucsContent">
+	<!-- CONTENT START -->
+	
+	<h1>Beispiel 2</h1>
+<p><b>(10 Punkte)</b></p>
+
+<p>
+    Für ein Quizspiel soll ein XML-basiertes Datenformat zur Repräsentation mehrerer Spiele entwickelt und in weiterer Folge mit einer Reihe von Technologien abgefragt und transformiert werden.
+</p>
+
+<p>
+    Bei diesem Quiz können Spielerinnen und Spieler gegeneinander antreten. Jedes Spiel besteht aus einer oder mehreren Runden. Je Runde gibt es eine oder mehrere Fragen. Jede Frage kann beliebig vielen Kategorien zugeordnet sein. Zu jeder Frage gibt es beliebig viele Antwortmöglichkeiten, wobei mindestens eine davon eine korrekte Antwort sein muss. Die Spielerinnen und Spieler können beliebig viele Antwortmöglichkeiten als korrekt kennzeichnen.
+</p>
+
+<p>
+    Anmerkung: Sie können sich besagtes Datenformat als eine Art "Speicherstand" für ein Quiz vorstellen.
+</p>
+
+<p>
+    Thema dieses 2. Übungsbeispiels ist die Entwicklung von Schemata für das Datenformat. 
+    Zuerst wird ein XML-Schema entwickelt und ein passendes XML-Instanzdokument erstellt. 
+    Danach erfolgt die Umsetzung mittels Document Type Definition (DTD). Schlussendlich sollten Sie noch ein JSON-Instanzdokument erstellen.
+</p>
+
+<h2>XML Schema</h2>
+
+<p>
+    Erstellen Sie im ersten Teil dieser Übung ein XML Schema <code>quiz.xsd</code> und ein XML Instanzdokument <code>quiz.xml</code>. 
+    Halten Sie sich beim Entwurf des Schemas an die folgenden Vorgaben:
+</p>
+
+<h3>Element <code>quiz</code></h3>
+
+<p>
+    Das Wurzelelement <code>quiz</code> kapselt alle benötigten Informationen über den Verlauf.
+</p>
+<p>
+    Es enthält die 5 folgenden Kindelemente in genau dieser Reihenfolge (jedes dieser Elemente ist <b>optional</b>):
+</p>
+<ul>
+    <li>Das Element <code>overview</code>.</li>
+    <li>Das Element <code>categories</code>.</li>
+    <li>Das Element <code>questions</code>.</li>
+    <li>Das Element <code>users</code>.</li>
+    <li>Das Element <code>games</code>.</li>
+</ul>
+
+<a name="elementOverview"></a>
+<h3>Element <code>overview</code></h3>
+<p>
+    Das Element <code>overview</code> dient ausschließlich zur Beschreibung und kann die Elemente <code>em</code> als auch <code>b</code> Elemente, sowie normalen Text kapseln. <code>em</code> sowie <code>b</code> Elemente können wiederrum <code>em</code>, <code>b</code> und <code>Text</code> als Inhalt besitzen.
+</p>
+<p>Zum Beispiel ist</p>
+<p><code>&lt;overview&gt;This &lt;em&gt;is&lt;/em&gt; an &lt;b&gt;example&lt;/b&gt; &lt;em&gt;text &lt;b&gt;!&lt;/b&gt; &lt;/em&gt;&lt;/overview&gt;</code></p>
+<p>eine gültige Beschreibung.</p>
+
+<a name="elementCategories"></a>
+<h3>Element <code>categories</code></h3>
+<p>
+    Das attributlose Element <code>categories</code> als Kindelement von <code>quiz</code> dient zum Speichern der unterschiedlichen Kategorienamen. Es enthält eine beliebig lange Sequenz von <code>category</code> Elementen.
+</p>
+
+<a name="elementCategory"></a>
+<h3>Element <code>category</code></h3>
+<p>
+    Das Element <code>category</code> beschreibt eine Kategorie die in späterer Folge referenziert wird. Es besitzt das Attribute <code>name</code>, dessen Wert eindeutig sein soll. (Dieses Element ist ein Empty-Element und enthält daher keinen Text.)
+</p>
+
+<a name="elementQuestions"></a>
+<h3>Element <code>questions</code></h3>
+<p>
+    Das attributlose Element <code>questions</code> als Kindelement von <code>quiz</code> dient zum Speichern der unterschiedlichen Fragen. Es enthält eine beliebig lange Sequenz von <code>question</code> Elementen.
+</p>
+
+<a name="elementQuestion"></a>
+<h3>Element <code>question</code></h3>
+<p>
+    Das Element <code>question</code> beschreibt eine tatsächliche Frage inklusive derer Antwortmöglichkeiten.
+    Es besitzt das Attribut <code>id</code>, welches die Fragennummer als Zahl angibt. Desweiteren besitzt es das Attribut <code>maxtime</code> welches die maximale Zeit zum beantworten der Frage als Zahl angibt.
+    Es besitzt die folgenden Kindelemente in genau dieser Reihenfolge:
+</p>
+<ul>
+    <li>Das Element <code>text</code> mit ausschließlich Textinhalt.</li>
+    <li>Eine beliebige Anzahl an <code>choice</code> Elementen.</li>
+    <li>Eine beliebige Anzahl an <code>group</code> Elementen.</li>
+</ul>
+
+<a name="elementChoice"></a>
+<h3>Element <code>choice</code></h3>
+<p>
+    Das Element <code>choice</code> beschreibt eine Antwortmöglichkeiten.
+    Es besitzt das Attribut <code>nr</code>, welches die Antwort innerhalb einer Frage als eindeutig kennzeichnet. Dieses Attribut wird als Zahl angegeben. Desweiteren besitzt es das optionale Attribut <code>correct</code> welches nur vorkommen soll, wenn die Antwortmöglichkeit tatsächlich korrekt ist. Dann bekommt das Attribut <code>correct</code> den Wert <code>true</code> zugewiesen. Der Textinhalt des <code>choice</code> Elementes entspricht der Antwortmöglichkeit.
+</p>
+
+<a name="elementGroup"></a>
+<h3>Element <code>group</code></h3>
+<p>
+    Das Element <code>group</code> ordnet das <code>question</code> Element einer oder mehreren Kategorien <code>category</code> zu.
+    Es besitzt das Attribut <code>name</code>, welches abhängig vom <code>name</code> Attribut des Elements <code>category</code> sein soll.
+    (Dieses Element ist ein Empty-Element und enthält daher keinen Text.)
+</p>
+
+<a name="elementUsers"></a>
+<h3>Element <code>users</code></h3>
+<p>
+    Das attributlose Element <code>users</code> als Kindelement von <code>quiz</code> dient zum Speichern der verschiedenen Benutzerinnen und Benutzer. Es enthält eine beliebig lange Sequenz von <code>user</code> Elementen.
+</p>
+
+<a name="elementUser"></a>
+<h3>Element <code>user</code></h3>
+<p>
+    Das Element <code>user</code> beschreibt eine mögliche Mitspielerin oder einen möglichen Mitspieler.
+    Es besitzt das Attribut <code>name</code>, welches eindeutig sein soll. Desweiteren besitzt es das Attribut <code>gender</code> welches nur die Werte "male" oder "female" annehmen soll.
+    Es besitzt die folgenden Kindelemente in genau dieser Reihenfolge:
+</p>
+<ul>
+    <li>Das Element <code>password</code> mit ausschließlich Textinhalt.</li>
+    <li>Das Element <code>firstname</code> mit ausschließlich Textinhalt.</li>
+    <li>Das Element <code>lastname</code> mit ausschließlich Textinhalt.</li>
+    <li>Das Element <code>birthdate</code> mit ausschließlich Textinhalt. (Hier sollte ein Datumsformat dieser Form verwendet werden: 1984-08-02)</li>
+</ul>
+
+<a name="elementGames"></a>
+<h3>Element <code>games</code></h3>
+<p>
+    Das attributlose Element <code>games</code> als Kindelement von <code>quiz</code> dient zum Speichern der verschiedenen Spiele. Es enthält eine beliebig lange Sequenz von <code>game</code> Elementen.
+</p>
+
+<a name="elementGame"></a>
+<h3>Element <code>game</code></h3>
+<p>
+    Das Element <code>game</code> beschreibt einen möglichen Spielverlauf und identifiziert dessen Mitspielerinnen und Mitspieler.
+    Es besitzt die folgenden Kindelemente in genau dieser Reihenfolge:
+</p>
+<ul>
+    <li>Ein oder zwei <code>gamer</code> Elemente.</li>
+    <li>Beliebig viele, mindestens aber ein <code>round</code> Element.</li>
+</ul>
+
+<a name="elementGamer"></a>
+<h3>Element <code>gamer</code></h3>
+<p>
+    Das Element <code>gamer</code> identifiziert eine teilnehmende Mitspielerin oder einen teilnehmenden Mitspieler.
+    Es besitzt das Attribut <code>ref</code>, welches abhängig vom <code>name</code> Attribut des Elements <code>user</code> sein soll.
+    (Dieses Element ist ein Empty-Element und enthält daher keinen Text.)
+</p>
+
+<a name="elementRound"></a>
+<h3>Element <code>round</code></h3>
+<p>
+    Das Element <code>round</code> beschreibt den Spielverlauf einer Runde.
+    Es enthält beliebig viele, mindestens aber ein <code>answers</code> Element.
+</p>
+
+<a name="elementAnswers"></a>
+<h3>Element <code>answers</code></h3>
+<p>
+    Das Element <code>answers</code> beschreibt die tatsächlichen Antworten der jeweiligen Spielerinnen und Spieler zu einer Frage.
+    Es besitzt das Attribut <code>question</code>, welches als Zahl angegeben wird und besitzt die folgenden Kindelemente:
+</p>
+<ul>
+    <li>Ein oder zwei <code>player</code> Elemente.</li>
+</ul>
+
+<a name="elementPlayer"></a>
+<h3>Element <code>player</code></h3>
+<p>
+    Das Element <code>player</code> besitzt das Attribut <code>ref</code>, welches abhängig vom <code>name</code> Attribut des Elements <code>user</code> sein soll und besitzt folgende Kindelemente:
+</p>
+<ul>
+    <li>Beliebig viele <code>answer</code> Elemente.</li>
+</ul>
+
+<a name="elementAnswer"></a>
+<h3>Element <code>answer</code></h3>
+<p>
+    Das Element <code>answer</code> besitzt das Attribut <code>nr</code>, welches die Antwortnummer als Zahl angibt. Desweiteren besitzt es das Attribut <code>time</code> welches die Zeit als Zahl angibt, die zum beantworten der Frage gebraucht wurde. (Dieses Element ist ein Empty-Element und enthält daher keinen Text.)
+</p>
+
+
+
+<h3>Bemerkungen</h3>
+
+<p>Beachten Sie folgende generelle Bemerkungen:</p>
+<ul>
+    <li>Wenn nicht anders angegeben sind alle Elemente und Attribute verpflichtend.</li>
+    <li>Alle genannten Zahlen haben ganzzahlige Werte.</li>
+</ul>
+
+<h3>Instanzdokument <code>quiz.xml</code></h3>
+
+<p>
+    Erstellen Sie ein XML Instanzdokument <code>quiz.xml</code> für das Schema <code>quiz.xsd</code>. Stellen Sie die folgenden Dinge sicher:
+</p>
+<ul>
+    <li>Es sollen mindestens drei Kategorien(category) angelegt werden.</li>
+    <li>Es sollen mindestens drei Fragen(question) angelegt werden, wobei jede mindestens drei Antwortmöglichkeiten(choice) bietet.</li>
+    <li>Es sollen mindestens drei Benutzerinnen und Benutzer(user) angelegt werden, wobei sowohl männliche als auch weibliche Benutzerinnen und Benutzer vorkommen sollen.</li>
+    
+    <li>Es soll mindestens ein Spiel(game) angelegt werden, an dem zwei Spielerinnen oder Spieler (gamer) teilnehmen.</li>
+    <li>Ein Spiel(game) soll mindestens zwei Runden(round) enthalten.</li>
+    <li>Eine Runde(round) soll mindestens zwei Antwortenblöcke(answers) enthalten.</li>
+    <li>In jedem dieser Antwortblöcke(answer) sollen genau zwei Spielerblöcke(player) angelegt werden.</li>
+    <li>Diese Spielerblöcke(player) sollen wiederum mindestens eine konkrete Antwort(answer) enthalten.</li>
+</ul>
+
+<p>
+    Stellen Sie sicher, dass das XML Instanzdokument <code>quiz.xml</code> jedenfalls mit dem XML Schema <code>quiz.xsd</code> validiert. 
+    Sie können dies mit dem folgenden Befehl überprüfen:
+</p>
+<p>
+    <code>xmllint --schema quiz.xsd quiz.xml</code>
+</p>
+<p>
+    Downloads und Nutzungshinweise zu <code>xmllint</code> finden Sie auf der <a href="http://www.dbai.tuwien.ac.at/education/ssd/current/uebung.html#xmllint">Übungsseite</a>.
+</p>
+
+<h3>Zusammenfassung</h3>
+
+<ul>
+    <li><b>Resultierende Dateien</b>: <code>quiz.xml</code>, <code>quiz.xsd</code></li>
+    <li><b>Maximale Punkte</b>: 6</li>
+</ul>
+
+<h2>Document Type Definition (DTD)</h2>
+
+<p>
+    Erstellen Sie im zweiten Teil eine Document Type Definition (DTD) <code>quiz.dtd</code>, 
+    für die soweit wie möglich die gleichen XML Instanzdokumente gültig sein sollen, 
+    wie für das XML Schema <code>quiz.xsd</code>, das Sie im ersten Teil erstellt haben.
+</p>
+
+<p>
+    Einige Spezifikationsmöglichkeiten von XML Schema lassen sich nur sehr umständlich oder gar nicht in einer DTD umsetzen. 
+    Welche Funktionalitäten sind dies? Sie müssen in jedem dieser Fälle beim Abgabegespräch begründen können, 
+    warum die Umsetzung in der DTD nicht oder nur teilweise möglich ist.
+</p>
+<p>
+    Insbesondere ist es nicht notwendig, große Zahlenbereiche durch Aufzählungen umzusetzen 
+    (z.B. "Zahl zwischen 1 und 72" als Aufzählung von 72 Zahlen). 
+</p>
+
+
+<h3>Zusammenfassung</h3>
+
+<ul>
+    <li><b>Resultierende Dateien</b>: <code>quiz.dtd</code></li>
+    <li><b>Maximale Punkte</b>: 3</li>
+</ul>
+
+<h3>Bemerkungen</h3>
+
+<p>
+    Stellen Sie sicher, dass das XML Instanzdokument <code>quiz.xml</code> mit der DTD <code>quiz.dtd</code> validiert. 
+    Sie können dies mit dem folgenden Befehl überprüfen:
+</p>
+<p>
+    <code>xmllint --dtdvalid quiz.dtd quiz.xml</code>
+</p>
+
+<h2>JSON Instanz Dokument</h2>
+
+<p>
+    Erstellen Sie ein JSON Dokument (quiz.json). Dieses soll die gleichen Daten enthalten, welche auch in der XML Instanz abgebildet wurden. Beachten Sie dabei bitte folgende Punkte:
+</p>
+<ul>
+    <li>Jeder Attribute-Name dessen Wert nummerisch ist sollte mit einem "$" beginnen, alle anderen sollten mit einem "+" starten.</li>
+    <li>Ansonsten können Sie hier freie, vernüftige Annahmen treffen.</li>
+    <li>Seien Sie beim Kontrollgespräch bereit ihre getroffenen Annahmen zu begründen.</li>
+    <li>Zum &Uuml;berpr&uuml;fen ihres JSON codes können Sie z.B. Validator wie <a href='http://jsonlint.com/' target='_blank'>http://jsonlint.com/</a> verwenden.</li>
+</ul>
+
+<h3>Zusammenfassung</h3>
+
+<ul>
+    <li><b>Resultierende Datei</b>: <code>quiz.json</code></li>
+    <li><b>Maximale Punkte</b>: 1</li>
+</ul>
+    
+<h2>Abgabe</h2>
+
+<p>Insgesamt sind also folgende Dateien abzugeben:</p>
+
+<ul>
+    <li><code>quiz.xml</code></li>
+    <li><code>quiz.xsd</code></li>
+    <li><code>quiz.dtd</code></li>
+    <li><code>quiz.json</code></li>
+</ul>
+
+<p>
+    Diese sind in einer ZIP-Datei <code>beispiel2.zip</code> bis spätestens <span style='background-color:yellow'>08.05.2014</span> um 23:59 im 
+    <a href="http://minteka.dbai.tuwien.ac.at/coursemanager/">CourseManager</a> abzugeben. 
+    Es wird stets die zuletzt hochgeladene Version Ihrer Lösung gewertet.
+</p>
+
+<h3>Abgabegespräche</h3>
+
+<p>
+    Für Beispiel 2 werden maximal 10 Punkte vergeben. Im Rahmen des Kontrollgespräches wird nicht nur die Korrektheit, 
+    sondern vor allem das <b>Verständnis</b> der Technologien überprüft.
+</p>
+<p> Die volle Punktezahl gibt es nur wenn das Beispiel korrekt gelöst ist und die Lösung erklärt werden kann.  Nicht selbstständig gelöste Abgaben werden mit 0 Punkten bewertet!</p> <p> Erscheinen Sie in Ihrem eigenen Interesse <b>pünktlich</b> zum Abgabegespräch, da andernfalls nicht garantiert werden kann, dass Ihre gesamte Lösung in der verbleibenden Zeit beurteilt werden kann.  </p> <!-- CONTENT END -->
+
+
+	<!-- CONTENT END -->
+	<div style="text-align:right;">
+		
+    <!--Letzte &Auml;nderung: 2013-05-02 16:26-->
+      	</div>	
+      </div>
+
+      <!--include virtual="/_resources/SSI/disclaimer.html" -->
+
+      <div id="tucsFooter">
+     <hr class="tucsSkip" />
+     <p><a href="/">Home</a> /
+     <a href="/address/">Kontakt</a> /
+     <a href="mailto:webmaster@dbai.tuwien.ac.at">Webmaster</a> /
+     Offenlegung gemäß § 25 Mediengesetz: Inhaber der Website ist das
+     Institut für Informationssysteme an der Technischen Universität Wien,
+     1040 Wien. Die TU Wien distanziert sich von den Inhalten aller
+     extern gelinkten Seiten und übernimmt diesbezüglich keine Haftung. /
+     <a href="http://www.tuwien.ac.at/impressum/disclaimer/"
+        onclick="javascript:window.open('http://www.tuwien.ac.at/impressum/disclaimer/','d','width=680,height=500,scrollbars'); return false">Disclaimer</a>.
+     </p>
+</div>
+
+
+      <a name="bottom"></a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <title>Semistrukturierte Daten - VU 184.705 (2.0)</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<link rel="stylesheet" href="/_resources/tucs/styles/rendering-all.css" media="all" type="text/css"/>
+	<link rel="stylesheet" href="/_resources/tucs/styles/rendering-print.css" media="print" type="text/css"/>
+
+    <style type="text/css">
+      .tcenter {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .table1 {
+        border-collapse: collapse;
+      }
+      .table1 th {
+        border: 1px inset black;
+        padding: 1px;
+      }
+      .table1 td {
+        border: 1px inset black;
+        padding: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="tucsWrap">
+      <a name="top"></a>
+      <div id="tucsHeader">
+        <p class="tucsSkip"><a href="#content">Skip to Content</a></p>
+        <div id="tucsBanner">
+  <img src="/_resources/tucs/images/bgbanner.png" usemap="#tucsBannerMap" alt=""/>
+  <map name="tucsBannerMap" id="tucsbannermap">
+	    <area shape="rect" coords="58,15,105,62" alt="TU Wien" href="http://www.tuwien.ac.at/"/>
+	    <area shape="rect" coords="111,15,158,63" alt="Fakult&auml;t f&uuml;r Informatik" href="http://www.informatik.tuwien.ac.at/"/>
+	    <area shape="rect" coords="167,15,269,62" alt="DBAI" href="http://www.dbai.tuwien.ac.at/"/>
+	    <area shape="rect" coords="468,44,666,93" alt="Database and Artificial Intelligence Group" href="http://www.dbai.tuwien.ac.at/"/>
+  </map>
+</div>
+
+
+        <div id="tucsNav">
+          <span class="tucsSkip">Top-level Navigation:</span>
+          <ul id="tucsMain">
+	    <li><a href="/staff/index.html">Staff</a></li>
+	    <li class="tucsCurrent"><a href="/education/">Education</a></li>
+	    <li><a href="/research/index.html">research</a></li>
+	    <li><a href="/address/index.html">Contact</a></li>
+	    <li class="tucsLast"><a href="/service/index.html">Services</a></li>
+          </ul>
+          <span class="tucsSkip">Current-level Navigation:</span>
+          <ul id="tucsSub">
+	    <li><a href="../index.html">Vorlesungsteil</a></li>
+	    <li class="tucsCurrent">&Uuml;bungsteil</li>
+          </ul>
+        </div>
+        <p id="tucsPath">
+          <span class="tucsSkip">Path:</span>
+          <a href="/index.html">DBAI</a> &gt;
+          <a href="/education/">Education</a> &gt;
+	  <a href="/education/ssd">Semistrukturierte Daten</a> &gt;
+	  <a href="/education/ssd/current/uebung.html">&Uuml;bung</a> &gt;
+	  Beispiel 3
+        </p>
+        <p id="tucsTools">
+          <span class="tucsSkip">Tools:</span>
+	  <a href="#" onclick="window.print(); return false">Drucken</a>
+        </p>
+	
+        <hr class="tucsSkip" />
+      </div>
+      <a name="content"></a>
+      <div id="tucsContent">
+	<!-- CONTENT START -->
+	
+	<h1>Beispiel 3</h1>
+<p><b>(15 Punkte)</b></p>
+
+<p>
+    Für ein Quizspiel soll ein XML-basiertes Datenformat zur Repräsentation mehrerer Spiele entwickelt und in weiterer Folge mit einer Reihe von Technologien abgefragt und transformiert werden.
+</p>
+
+<p>
+    Bei diesem Quiz können Spielerinnen und Spieler (kurz <em>User</em>) gegeneinander antreten. Jedes Spiel besteht aus einer oder mehreren Runden. Je Runde gibt es eine oder mehrere Fragen. Jede Frage kann beliebig vielen Kategorien zugeordnet sein. Zu jeder Frage gibt es beliebig viele Antwortmöglichkeiten, wobei mindestens eine davon eine korrekte Antwort sein muss. Die User können beliebig viele Antwortmöglichkeiten als korrekt kennzeichnen.
+</p>
+
+<p>
+    Anmerkung: Sie können sich besagtes Datenformat als eine Art "Speicherstand" für ein Quiz vorstellen.
+</p>
+
+<p>Thema dieses 3. Übungsbeispiels ist der Zugriff auf dieses 
+Datenformat mittels APIs und Abfragesprachen. Dabei wird über die Java 
+APIs SAX und DOM auf das Dokument zugegriffen und mit den 
+Sprachen XPath und XQuery Abfragen ausgewertet.</p>
+
+<h2>Grundgerüst</h2>
+
+Als Grundgerüst finden Sie im Folgenden ein ZIP-Archiv mit einer grundlegenden Projektstruktur und Ressourcen die Sie als Vorlage für diese Übung nutzen müssen.
+Weiters wird Ihnen in diesem Gerüst ein ant-Skript zur Verfügung gestellt (build.xml) um das Testen und die Abgabe der Übung zu vereinfachen:
+
+<ul>
+	<li><a href="ssd-ss14-beispiel3-template-r3.zip">Vorlage SSD Bsp3</a></li>
+</ul>
+
+<em>Beachten Sie:</em>
+<ul>
+	<li>Alle Dateien und Pfade beziehen sich auf diese Vorlage</li>
+	<li>Genauere Instruktionen zur Verwendung der ant Targets finden Sie in den einzelnen Übungsbeschreibungen</li>
+	<li>Die Verwendung dieser Vorlage ist <b>verpflichtend</b></li>
+        <li>Für die Teilaufgaben XPath, DOM und XQuery wird eine dem Schema <code>quiz.xsd</code> aus Beispiel 2 entsprechende XML-Datei benötigt. 
+        Eine solche Datei findet sich in <code>resources/quiz.xml</code> und ist bereits in den ant-Targets als Input vorkonfiguriert</li>
+</ul>
+
+
+<h2>XPath</h2>
+
+Erstellen Sie XPath Anfragen für folgende zehn Aufgabenstellungen, die sich auf dem Schema <code>quiz.xsd</code> aus Beispiel 2 entsprechende XML Dateien beziehen:
+
+<ol>
+	<li>Wie viele Kategorien gibt es?</li>
+	<li>Wie viele User sind männlich?</li>
+	<li>Geben Sie die IDs aller Question-Elemente aus die eine maxtime von 30 haben.</li>
+	<li>Geben Sie die maxtime des zweiten Question-Elementes aus.</li>
+	<li>Hat User Bart an einem Game teilgenommen?</li>
+	<li>Wie lange hat User Lisa im Durchschnitt zum Beantworten einer Frage benötigt?</li>
+	<li>Geben Sie die Namen jener User aus, welche nie in einem Game mitgespielt haben.</li>
+	<li>Geben Sie die maxtime jener Question-Elemente aus die in einem Game vorgekommen sind.</li>
+	<li>Wie viele Antworten hat Lisa abgegeben, bei denen das time Attribute kleiner als 11 ist?</li>
+	<li>Geben Sie für das Question-Element mit der ID 2 den Text aller als korrekt gekennzeichneten Choice-Elemente aus.</li>
+</ol>
+
+<p>Generell gilt: Falls die jeweilige Frage auf einem Eingabedokument nicht beantwortet werden kann, beispielsweise weil das betrachtete Element oder Attribut nicht vorkommt, soll das leere Ergebnis zurückgegeben werden. Das ist bei den meisten üblichen XPath-Ausdrücken 
+ganz automatisch der Fall, ohne diesen Fall speziell berücksichtigen zu müssen.</p>
+
+<p>Für das Testen der einzelnen XPath-Anfragen können Sie das grafische Tool XPathWay (<a href="http://www.dbai.tuwien.ac.at/education/ssd/current/xpathway/xpathway101.jar">Version 1.01</a>) verwenden. Weitere Nutzungshinweise zu XPathWay finden Sie auf der <a href="http://www.dbai.tuwien.ac.at/education/ssd/current/uebung.html#xpathway">Übungsseite</a>. Überprüfen Sie damit, ob Ihre Anfragen die richtigen Ergebnisse liefern.</p>
+
+<p>Die Abgabe soll in der vorgegebenen Datei <code>src/xpath.xsl</code> in den jeweiligen dafür vorgesehenen Platzhaltern erfolgen.<br>
+
+</p><h3>Aufruf</h3>
+Weiters testen Sie die Anfragen über ant:
+	<ul>
+		<li>Führen Sie <code>ant run-xpath</code> aus</li>
+		<li>Es wird ein HTML Dokument in <code>output/xpath-output.html</code> erzeugt</li>
+		<li>Dieses können Sie im Browser öffnen um die Ausgabe Ihrer Anfragen zu testen</li>
+	</ul>
+<p></p>
+
+<em>Beachten Sie:</em> Eine korrekte Anzeige in <code>output/xpath-output.html</code> ist Voraussetzung um alle Punkte bei dieser Aufgabe zu erhalten.
+
+<h3>Zusammenfassung</h3>
+
+<ul>
+	<li><b>Resultierende Dateien</b>: <code>src/xpath.xsl</code></li>
+	<li><b>Maximale Punkte</b>: 3</li>
+</ul>
+
+
+<h2>DOM</h2>
+
+<p>Basierend auf <code>src/dom/Dom.java</code> erstellen Sie ein Java Programm, das eine (dem Schema <code>quiz.xsd</code> aus Beispiel 2 entsprechende) 
+XML Datei als Eingabe erhält. 
+Vervollständigen Sie dazu die Methoden <code>transform</code>, <code>getUserList</code> und <code>createOutput</code>.
+Mit Hilfe von DOM soll ein XML-Dokument mit folgender Spezifikation erzeugt werden:</p>
+
+<ul>
+	<li>Wurzelelement <code>users-dom</code></li>
+	<li>Beliebig viele Kindelemente <code>user</code> basierend auf allen Kindelementen in <code>users</code> (Liste <em>aller</em> User)</li>
+	<li><code>user</code> Attribute:</li>
+	<ul>
+		<li>name (Attribut <code>name</code> in Element <code>user</code>)</li>
+		<li>gender (Attribut <code>gender</code> in Element <code>user</code>)</li>
+		<li>fullname (Elementinhalte der Elemente <code>firstname</code> und <code>lastname</code> in Element <code>user</code>, getrennt durch ein Leerzeichen)</li>
+		<li>birthdate (Elementinhalte des Elements <code>birthdate</code> in Element <code>user</code>)</li>
+	</ul>
+	<li><code>user</code> Unterelemente:</li>
+	<ul>
+		<li>answerCount: gibt an wieviel Antworten der User abgegeben hat</li>
+		<li>gameCount: gibt an, an wievielen Spielen der User teilgenommen hat</li>
+		<li>sumTime: die Summe aller Antwortzeiten des Users</li>
+	</ul>	
+</ul>
+
+Angewendet auf die Datei <code>resources/quiz.xml</code> sollten Sie den gleichen Output erhalten wie er auch in der Datei <code>resources/dom-sample-output.xml</code> dargestellt ist.
+
+<h3>Aufruf</h3>
+
+<p>Ihr Java Programm <code>Dom.java</code> soll per Kommandozeile 
+aufrufbar sein, und genau zwei Argumente erhalten: Als erstes Argument 
+den Dateipfad der Eingabedatei und als zweites Argument den Dateipfad 
+der gewünschten Ausgabedatei.</p>
+<p>Im bereits vorkonfigurierten ant Target <code>run-dom</code> wird das Java Programm 
+mit der Eingabedatei <code>resources/quiz.xml</code> und der Ausgabedatei <code>output/dom-output.xml</code> ausgeführt.</p>
+
+<p>Stellen Sie somit sicher, dass sich Ihre Java Datei folgendermaßen ausführen lässt:</p>
+<ul>
+	<li><code>ant run-dom</code></li>
+</ul>
+
+<em>Beachten Sie:</em> Eine korrekte Anzeige in <code>output/dom-output.xml</code> ist Voraussetzung um alle Punkte bei dieser Aufgabe zu erhalten.
+
+<h3>Hinweis</h3>
+Sie können in Java XPath Ausdrücke über ein XML Dokument auswerten lassen. Im folgenden ein kurzes Beispiel dazu:
+<pre>   <code>
+XPath xPath;
+XPathExpression xpathExpr = xPath.compile("//user");
+NodeList userNodes = (NodeList)xpathExpr.evaluate(quizDocument,
+                                                XPathConstants.NODESET);
+   </code>
+</pre>
+
+<h3>Zusammenfassung</h3>
+
+<ul>
+	<li><b>Resultierende Dateien</b>: <code>Dom.java</code> (und bei Bedarf weitere Klassen aus <code>src/dom</code>)</li>
+	<li><b>Maximale Punkte</b>: 5</li>
+</ul>
+
+<h2>SAX</h2>
+
+<p>Basierend auf <code>src/sax/Sax.java</code> erstellen Sie ein Java Programm, das mit Hilfe eines SAX <code>ContentHandler</code> 
+eine (der XML Datei  <code>resources/quiz.xml</code> entsprechende) XML Datei als Eingabe erhält, und eine SQL Datei erstellt.</p>
+Vervollständigen Sie dazu die Methode <code>createInsertSQL</code> und die Klasse <code>SQLContentHandler</code>.
+Die resultierende SQL Datei stellt eine Abbildung der <code>question</code> Elemente aus <code>quiz.xml</code> dar und wird wie folgt gemappt:
+
+<ul>
+	<li>Jedes <code>question</code> Element resultiert in einem <code>INSERT</code> Statement in die Tabelle <code>Questions</code> mit den Feldern:</li>
+	<ul>
+		<li><b>id</b>: den Wert des <code>id</code> Attributes</li>
+		<li><b>text</b>: der Textinhalt des <code>text</code> Elements</li>
+		<li><b>nrOfChoices</b>: die Anzahl der <code>choice</code> Elemente</li>
+		<li><b>nrOfCorrectChoices</b>: die Anzahl der <code>choice</code> Elemente die als Attribut <code>correct='true'</code> besitzen</li>
+		<li><b>nrOfGroups</b>: die Anzahl der <code>group</code> Elemente</li>
+	</ul>
+</ul>
+
+<h3>Beispielhafte Transformation</h3>
+
+Folgendes <code>question</code> Element:
+<code>
+	<pre>    
+   &lt;question id="1" maxtime="30"&gt;
+      &lt;text&gt;Wie heißt das Baby der Simpson Familie?&lt;/text&gt;
+      &lt;choice nr="1" correct="true"&gt;Maggie&lt;/choice&gt;
+      &lt;choice nr="2"&gt;Marge&lt;/choice&gt;
+      &lt;choice nr="3"&gt;Mabel&lt;/choice&gt;
+      &lt;group name="leicht"/&gt;
+   &lt;/question&gt;
+	</pre>
+</code>
+
+Wird zu folgendem <code>INSERT</code> statement abgebildet:
+<p>
+	<code>INSERT INTO Questions (id, text, nrOfChoices, nrOfCorrectChoices, nrOfGroups) values (1, 'Wie heißt das Baby der Simpson Familie?', 3, 1, 1)</code><br>
+</p>
+
+
+
+<h3>Aufruf</h3>
+
+<p>Ihr Java Programm <code>Sax.java</code> soll per Kommandozeile aufrufbar sein, und genau zwei Argumente erhalten: Als erstes Argument 
+den Dateipfad der Eingabedatei und als zweites Argument den Dateipfad der gewünschten Ausgabedatei.</p>
+<p>Im bereits vorkonfigurierten ant Target <code>run-sax</code> wird das Java Programm 
+mit der Eingabedatei <code>resources/quiz.xml</code> und der Ausgabedatei <code>output/sax-output.sql</code> ausgeführt.</p>
+
+<p>Stellen Sie somit sicher, dass sich Ihre Java Datei folgendermaßen ausführen lässt:</p>
+<ul>
+	<li><code>ant run-sax</code></li>
+</ul>
+
+<em>Beachten Sie:</em> Eine korrekte Anzeige in <code>output/sax-output.sql</code> ist Voraussetzung um alle Punkte bei dieser Aufgabe zu erhalten.
+
+<h3>Zusammenfassung</h3>
+
+<ul>
+	<li><b>Resultierende Dateien</b>: <code>Sax.java</code></li>
+	<li><b>Maximale Punkte</b>: 5</li>
+</ul>
+
+
+<h2>XQuery</h2>
+
+<p>Erstellen Sie eine XQuery <code>src/xquery.xq</code>, die eine (dem Schema <code>quiz.xsd</code> aus Beispiel 2 entsprechende) XML Datei als Eingabe erhält, und eine Liste aller User ausgibt.
+ <br>
+    Sortieren Sie die Liste aufsteigend nach dem Namen(attribute name) des Users und verwenden Sie diesen als Tag-Namen. Jedes User-Element soll die Anzahl aller Antworten kapseln. Zu jedem User sollen folgende Attribute erstellt werden:
+    <ul>
+		<li><b>sumTime</b>: Summe aller Antwortzeiten der User</li>
+		<li><b>avgTime</b>: Durchschnittliche Antwortzeit der User</li>
+	</ul>
+	
+ </p>
+ <p>
+ <b>Die Ausgabe sollte wie folgt aussehen:</b></p>
+
+<code>
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;stats&gt;
+   &lt;bart sumTime="17" avgTime="4.25"&gt;
+      &lt;answerCount&gt;4&lt;/answerCount&gt;
+   &lt;/bart&gt;
+   &lt;homer sumTime="0" avgTime="0"&gt;
+      &lt;message&gt;No answers for this user found&lt;/message&gt;
+   &lt;/homer&gt;
+   &lt;lisa sumTime="24" avgTime="8"&gt;
+      &lt;answerCount&gt;3&lt;/answerCount&gt;
+   &lt;/lisa&gt;
+&lt;/stats&gt;
+</pre>
+</code>
+
+<p>Stellen Sie sicher, dass sich Ihre XQuery <code>xquery.xq</code> folgendermaßen ausführen lässt:</p>
+<ul>
+	<li><code>ant run-xquery</code></li>
+</ul>
+Dabei wird die Anfrage aus <code>src/xquery.xq</code> das XML-Dokument <code>output/xquery-output.xml</code> erzeugt.
+
+<em>Beachten Sie:</em> Eine korrekte Anzeige in <code>output/xquery-output.xml</code> ist Voraussetzung um alle Punkte bei dieser Aufgabe zu erhalten.
+
+<h3>Zusammenfassung</h3>
+
+<ul>
+	<li><b>Resultierende Dateien</b>: <code>xquery.xq</code></li>
+	<li><b>Maximale Punkte</b>: 2</li>
+</ul>
+
+<h2>Abgabe</h2>
+
+<p>Um ein abgabefertiges Archiv <code>ssd-exercise3-ss14.zip</code> zu erzeugen, führen Sie folgenden Befehl aus:</p>
+
+<ul>
+	<li><code>ant zip</code></li>
+</ul>
+
+<p>Diese ZIP-Datei ist bis spätestens <span style='background-color:yellow'>05.06.2014</span> um 23:59 im <a href="http://minteka.dbai.tuwien.ac.at/coursemanager/">CourseManager</a> abzugeben. Es wird stets die zuletzt hochgeladene Version Ihrer Lösung gewertet.</p>
+
+<h3>Abgabegespräche</h3>
+
+<p>Für Beispiel 3 werden maximal 15 Punkte vergeben. Im Rahmen des 
+Kontrollgespräches wird nicht nur die Korrektheit, sondern vor allem das
+ <b>Verständnis</b> der Technologien überprüft.</p>
+
+<p>Die volle Punktezahl gibt es nur wenn das Beispiel korrekt gelöst ist
+ und die Lösung erklärt werden kann. Nicht selbstständig gelöste Abgaben
+ werden mit 0 Punkten bewertet!</p>
+
+<p>Erscheinen Sie in Ihrem eigenen Interesse <b>pünktlich</b> zum 
+Abgabegespräch, da andernfalls nicht garantiert werden kann, dass Ihre 
+gesamte Lösung in der verbleibenden Zeit beurteilt werden kann.</p>
+
+
+	<!-- CONTENT END -->
+	<div style="text-align:right;">
+		
+    <!--Letzte &Auml;nderung: 2013-05-02 16:27-->
+      	</div>	
+      </div>
+
+      <!--include virtual="/_resources/SSI/disclaimer.html" -->
+
+      <div id="tucsFooter">
+     <hr class="tucsSkip" />
+     <p><a href="/">Home</a> /
+     <a href="/address/">Kontakt</a> /
+     <a href="mailto:webmaster@dbai.tuwien.ac.at">Webmaster</a> /
+     Offenlegung gemäß § 25 Mediengesetz: Inhaber der Website ist das
+     Institut für Informationssysteme an der Technischen Universität Wien,
+     1040 Wien. Die TU Wien distanziert sich von den Inhalten aller
+     extern gelinkten Seiten und übernimmt diesbezüglich keine Haftung. /
+     <a href="http://www.tuwien.ac.at/impressum/disclaimer/"
+        onclick="javascript:window.open('http://www.tuwien.ac.at/impressum/disclaimer/','d','width=680,height=500,scrollbars'); return false">Disclaimer</a>.
+     </p>
+</div>
+
+
+      <a name="bottom"></a>
+    </div>
+  </body>
+</html>

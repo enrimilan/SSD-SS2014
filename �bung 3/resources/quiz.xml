@@ -1,0 +1,102 @@
+<quiz>
+	<overview>This <b>Quiz</b> is <em>really <b>awesome</b></em></overview>
+	
+    <categories>
+        <category name="leicht"/>
+        <category name="mittel"/>
+        <category name="schwer"/>
+    </categories>
+    
+    <questions>
+		<question id="1" maxtime="30">
+			<text>Wie heißt das Baby der Simpson Familie?</text>
+			<choice nr="1" correct="true">Maggie</choice>
+			<choice nr="2">Marge</choice>
+			<choice nr="3">Mabel</choice>
+			<group name="leicht"/>
+		</question>
+		
+		<question id="2" maxtime="40">
+			<text>Welches Bier trinkt Homer am liebsten?</text>
+			<choice nr="1">Corona</choice>
+			<choice nr="2" correct="true">Duff</choice>
+			<choice nr="3">Heineken</choice>
+			<group name="mittel"/>
+		</question>
+		
+		<question id="3" maxtime="30">
+			<text>Welche der folgenden Charaktere sind nicht Nachbarn der Simpsons?</text>
+			<choice nr="1">Rod Flanders</choice>
+			<choice nr="2">Tod Flanders</choice>
+			<choice nr="3" correct="true">Brad Fletcher</choice>
+			<choice nr="4">Ned Flanders</choice>
+			<choice nr="5" correct="true">Patty Bouvier</choice>
+			<group name="leicht"/>
+		</question>
+    </questions>
+    
+    <users>
+        <user name="Bart" gender="male">
+            <password>basi</password>
+            <firstname>Bart</firstname>
+            <lastname>Simpson</lastname>
+            <birthdate>1982-04-01</birthdate>
+        </user>
+
+        <user name="Lisa" gender="female">
+            <password>lisi</password>
+            <firstname>Lisa</firstname>
+            <lastname>Simpson</lastname>
+            <birthdate>1984-08-02</birthdate>
+        </user>
+
+        <user name="Homer" gender="male">
+            <password>hosi</password>
+            <firstname>Homer</firstname>
+            <lastname>Simpson</lastname>
+            <birthdate>1955-05-10</birthdate>
+        </user>
+    </users>
+
+    <games>
+        <game>
+			<gamer ref="Bart"/>
+			<gamer ref="Lisa"/>
+
+			<round>
+				<answers question="1">
+					<player ref="Bart">
+						<answer nr="1" time="5"/>
+					</player>
+
+					<player ref="Lisa">
+						<answer nr="1" time="2"/>
+					</player>
+				</answers>
+
+				<answers question="2">
+					<player ref="Bart">
+						<answer nr="2" time="2"/>
+					</player>
+
+					<player ref="Lisa">
+						<answer nr="1" time="12"/>
+					</player>
+				</answers>
+			</round>
+
+			<round>
+				<answers question="3">
+					<player ref="Bart">
+						<answer nr="3" time="5"/>
+						<answer nr="5" time="5"/>
+					</player>
+
+					<player ref="Lisa">
+						<answer nr="3" time="10"/>
+					</player>
+				</answers>
+			</round>
+        </game>
+    </games>
+</quiz>

@@ -1,0 +1,365 @@
+{
+  "quiz": {
+    "overview": {
+      "#text": [
+        "This ",
+        "an "
+      ],
+      "em": [
+        "is",
+        { "b": "quiz!" }
+      ],
+      "b": { "em": "example" }
+    },
+    "categories": {
+      "category": [
+        { "+name": "Technology" },
+        { "+name": "Sports" },
+        { "+name": "Geography" },
+        { "+name": "History" }
+      ]
+    },
+    "questions": {
+      "question": [
+        {
+          "$id": "1",
+          "+maxtime": "00:00:15",
+          "text": "Which mobile phone manufacturer uses the advertising slogan: Quietly brilliant?",
+          "choice": [
+            {
+              "$nr": "1",
+              "#text": "Nokia"
+            },
+            {
+              "$nr": "2",
+              "#text": "Samsung"
+            },
+            {
+              "$nr": "3",
+              "+correct": "true",
+              "#text": "HTC"
+            }
+          ],
+          "group": { "+name": "Technology" }
+        },
+        {
+          "$id": "2",
+          "+maxtime": "00:00:10",
+          "text": "What is the capital of Cuba?",
+          "choice": [
+            {
+              "$nr": "1",
+              "#text": "Santiago de Cuba"
+            },
+            {
+              "$nr": "2",
+              "+correct": "true",
+              "#text": "Havana"
+            },
+            {
+              "$nr": "3",
+              "#text": "Acapulco"
+            }
+          ],
+          "group": { "+name": "Geography" }
+        },
+        {
+          "$id": "3",
+          "+maxtime": "00:00:15",
+          "text": "Who is the actual number one in the ATP ranking?",
+          "choice": [
+            {
+              "$nr": "1",
+              "+correct": "true",
+              "#text": "Rafael Nadal"
+            },
+            {
+              "$nr": "2",
+              "#text": "Novak Djokovic"
+            },
+            {
+              "$nr": "3",
+              "#text": "Roger Federer"
+            }
+          ],
+          "group": { "+name": "Sports" }
+        },
+        {
+          "$id": "4",
+          "+maxtime": "00:00:20",
+          "text": "Which century - the first book printed in English?",
+          "choice": [
+            {
+              "$nr": "1",
+              "+correct": "true",
+              "#text": "15th"
+            },
+            {
+              "$nr": "2",
+              "+correct": "true",
+              "#text": "Before the 16th"
+            },
+            {
+              "$nr": "3",
+              "#text": "19th"
+            },
+            {
+              "$nr": "4",
+              "#text": "17th"
+            }
+          ],
+          "group": { "+name": "History" }
+        },
+        {
+          "$id": "5",
+          "+maxtime": "00:00:10",
+          "text": "Where will the next World Cup take place?",
+          "choice": [
+            {
+              "$nr": "1",
+              "#text": "Germany"
+            },
+            {
+              "$nr": "2",
+              "#text": "Austria"
+            },
+            {
+              "$nr": "3",
+              "#text": "Italy"
+            },
+            {
+              "$nr": "4",
+              "+correct": "true",
+              "#text": "Brazil"
+            }
+          ],
+          "group": { "+name": "Sports" }
+        }
+      ]
+    },
+    "users": {
+      "user": [
+        {
+          "+name": "Ryan",
+          "+gender": "male",
+          "password": "apple",
+          "firstname": "Ryan",
+          "lastname": "Smith",
+          "birthdate": "1986-08-04"
+        },
+        {
+          "+name": "John",
+          "+gender": "male",
+          "password": "orange",
+          "firstname": "John",
+          "lastname": "Terry",
+          "birthdate": "1990-07-04"
+        },
+        {
+          "+name": "Anna",
+          "+gender": "female",
+          "password": "kiwi",
+          "firstname": "Anna",
+          "lastname": "Smith",
+          "birthdate": "1980-12-06"
+        },
+        {
+          "+name": "Lindsay",
+          "+gender": "female",
+          "password": "pie",
+          "firstname": "Lindsay",
+          "lastname": "Davenport",
+          "birthdate": "1989-02-09"
+        }
+      ]
+    },
+    "games": {
+      "game": [
+        {
+          "gamer": [
+            { "+ref": "Ryan" },
+            { "+ref": "John" }
+          ],
+          "round": [
+            {
+              "answers": [
+                {
+                  "$question": "1",
+                  "player": [
+                    {
+                      "+ref": "Ryan",
+                      "answer": {
+                        "$nr": "1",
+                        "+time": "00:00:10"
+                      }
+                    },
+                    {
+                      "+ref": "John",
+                      "answer": {
+                        "$nr": "2",
+                        "+time": "00:00:12"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$question": "2",
+                  "player": [
+                    {
+                      "+ref": "Ryan",
+                      "answer": {
+                        "$nr": "2",
+                        "+time": "00:00:05"
+                      }
+                    },
+                    {
+                      "+ref": "John",
+                      "answer": {
+                        "$nr": "2",
+                        "+time": "00:00:05"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "answers": [
+                {
+                  "$question": "3",
+                  "player": [
+                    {
+                      "+ref": "Ryan",
+                      "answer": {
+                        "$nr": "2",
+                        "+time": "00:00:17"
+                      }
+                    },
+                    {
+                      "+ref": "John",
+                      "answer": {
+                        "$nr": "4",
+                        "+time": "00:00:10"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$question": "4",
+                  "player": [
+                    {
+                      "+ref": "John",
+                      "answer": {
+                        "$nr": "3",
+                        "+time": "00:00:10"
+                      }
+                    },
+                    {
+                      "+ref": "Ryan",
+                      "answer": {
+                        "$nr": "1",
+                        "+time": "00:00:11"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gamer": [
+            { "+ref": "Lindsay" },
+            { "+ref": "Anna" }
+          ],
+          "round": [
+            {
+              "answers": [
+                {
+                  "$question": "1",
+                  "player": [
+                    {
+                      "+ref": "Lindsay",
+                      "answer": {
+                        "$nr": "3",
+                        "+time": "00:00:05"
+                      }
+                    },
+                    {
+                      "+ref": "Anna",
+                      "answer": {
+                        "$nr": "3",
+                        "+time": "00:00:07"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$question": "5",
+                  "player": [
+                    {
+                      "+ref": "Anna",
+                      "answer": {
+                        "$nr": "4",
+                        "+time": "00:00:06"
+                      }
+                    },
+                    {
+                      "+ref": "Lindsay",
+                      "answer": {
+                        "$nr": "3",
+                        "+time": "00:00:10"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "answers": [
+                {
+                  "$question": "5",
+                  "player": [
+                    {
+                      "+ref": "Lindsay",
+                      "answer": {
+                        "$nr": "4",
+                        "+time": "00:00:05"
+                      }
+                    },
+                    {
+                      "+ref": "Anna",
+                      "answer": {
+                        "$nr": "4",
+                        "+time": "00:00:02"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$question": "3",
+                  "player": [
+                    {
+                      "+ref": "Lindsay",
+                      "answer": {
+                        "$nr": "1",
+                        "+time": "00:00:04"
+                      }
+                    },
+                    {
+                      "+ref": "Anna",
+                      "answer": {
+                        "$nr": "1",
+                        "+time": "00:00:10"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

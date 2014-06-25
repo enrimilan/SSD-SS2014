@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ssd-exercise3-ss14" 
+         default="clean" 
+         basedir=".">
+    
+    <!-- Directories -->
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="resources.dir" value="resources"/>
+    <property name="output.dir" value="output"/>
+
+    <!-- DOM -->
+    <property name="dom.inputpath" value="${resources.dir}/quiz.xml"/>
+    <property name="dom.outputpath" value="${output.dir}/dom-output.xml"/>
+    
+    <!-- SAX -->
+    <property name="sax.inputpath" value="${resources.dir}/quiz.xml"/>
+    <property name="sax.outputpath" value="${output.dir}/sax-output.sql"/>
+    
+    <!-- XPath -->
+    <property name="xpath.inputpath" value="${src.dir}/xpath.xsl"/>
+    <property name="xpath.inputxmlpath" value="${resources.dir}/quiz.xml"/>
+    <property name="xpath.outputpath" value="${output.dir}/xpath-output.html"/>
+    
+    <!-- XQuery -->
+    <property name="xquery.inputpath" value="${resources.dir}/quiz.xml"/>
+    <property name="xquery.querypath" value="${src.dir}/xquery.xq"/>
+    <property name="xquery.outputpath" value="${output.dir}/xquery-output.xml"/>
+    
+    <!-- Submission .zip file -->
+    <property name="zip.name" value="ssd-exercise3-ss14.zip"/>
+    
+    <!-- Classpath: References compiled classes and libraries in lib.dir -->
+    <path id="classpath">
+        <pathelement location="${build.dir}"/>
+        <fileset dir="${lib.dir}">
+            <include name="saxon9he.jar"/>
+            <include name="xercesImpl.jar"/>
+            <include name="xml-apis.jar"/>
+        </fileset>
+    </path>
+    
+    <!-- Create the .zip file for the submission of this exercise -->
+    <target name="zip">
+        <delete file="${zip.name}" />
+        <zip destfile="${zip.name}" encoding="UTF-8">
+            <fileset dir="${src.dir}"/>
+        </zip>
+    </target>
+    
+    <!-- Clean the project -->
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${output.dir}"/>
+    </target>
+
+    <!-- Compile SAX -->
+    <target name="compile-sax">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${output.dir}"/>
+        <javac srcdir="${src.dir}" 
+               destdir="${build.dir}"
+               includes="sax/*.java"
+               classpathref="classpath"
+               debug="true" 
+               deprecation="true"
+               includeantruntime="false"/>
+    </target>
+    
+    <!-- Compile DOM -->
+    <target name="compile-dom">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${output.dir}"/>
+        <javac srcdir="${src.dir}" 
+               destdir="${build.dir}"
+               includes="dom/*.java"
+               classpathref="classpath"
+               debug="true" 
+               deprecation="true"
+               includeantruntime="false"/>
+    </target>
+    
+    <target name="run-dom" depends="compile-dom">
+        <java classname="dom.Dom" classpathref="classpath">
+            <arg value="${dom.inputpath}"/>
+            <arg value="${dom.outputpath}"/>
+        </java>
+    </target>
+    
+    <target name="run-sax" depends="compile-sax">
+        <java classname="sax.Sax" classpathref="classpath">
+            <arg value="${sax.inputpath}"/>
+            <arg value="${sax.outputpath}"/>
+        </java>
+    </target>
+    
+    <target name="run-xpath">
+        <java classname="net.sf.saxon.Transform" classpathref="classpath">
+            <arg value="-s:${xpath.inputxmlpath}"/>
+            <arg value="-xsl:${xpath.inputpath}"/>
+            <arg value="-o:${xpath.outputpath}"/>
+        </java>        
+    </target>
+    
+    <target name="run-xquery">
+        <java classname="net.sf.saxon.Query" classpathref="classpath">
+            <arg value="-s:${xquery.inputpath}"/>
+            <arg value="-q:${xquery.querypath}"/>
+            <arg value="-o:${xquery.outputpath}"/>
+        </java>
+    </target>
+    
+</project>

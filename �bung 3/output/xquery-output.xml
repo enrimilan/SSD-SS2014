@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stats>
+   <bart sumTime="17" avgTime="4.25">
+      <answerCount>4</answerCount>
+   </bart>
+   <homer sumTime="0" avgTime="0">
+      <message>No answers for this user found</message>
+   </homer>
+   <lisa sumTime="24" avgTime="8">
+      <answerCount>3</answerCount>
+   </lisa>
+</stats>

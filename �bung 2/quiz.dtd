@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT quiz (overview?, categories?, questions?, users?, games?)>
+
+<!ELEMENT overview (#PCDATA | em | b)*>
+<!ELEMENT b (#PCDATA | em | b)*>
+<!ELEMENT em (#PCDATA | em | b)*>
+
+<!ELEMENT categories (category*)>
+<!ELEMENT category EMPTY>
+<!ATTLIST category name ID #REQUIRED>
+
+<!ELEMENT questions (question*)>
+<!ELEMENT question (text, choice*, group*)>
+<!ATTLIST question id CDATA #REQUIRED
+				   maxtime CDATA #REQUIRED>
+<!ELEMENT text (#PCDATA)>
+<!ELEMENT choice (#PCDATA)>
+<!ATTLIST choice nr CDATA #REQUIRED
+				 correct (true) #IMPLIED>
+<!ELEMENT group EMPTY>
+<!ATTLIST group name IDREF #REQUIRED>
+
+<!ELEMENT users (user*)>
+<!ELEMENT user (password, firstname, lastname, birthdate)>
+<!ATTLIST user name ID #REQUIRED
+               gender (male|female) #REQUIRED>
+<!ELEMENT password (#PCDATA)>
+<!ELEMENT firstname (#PCDATA)>
+<!ELEMENT lastname (#PCDATA)>
+<!ELEMENT birthdate (#PCDATA)>
+   
+<!ELEMENT games (game*)>
+<!ELEMENT game (gamer, gamer?, round+)>
+<!ELEMENT gamer EMPTY>
+<!ATTLIST gamer ref IDREF #REQUIRED>
+<!ELEMENT round (answers+)>
+<!ELEMENT answers (player, player?)>
+<!ATTLIST answers question CDATA #REQUIRED>
+<!ELEMENT player (answer*)>
+<!ATTLIST player ref IDREF #REQUIRED>
+<!ELEMENT answer EMPTY>
+<!ATTLIST answer nr CDATA #REQUIRED
+                 time CDATA #REQUIRED>
